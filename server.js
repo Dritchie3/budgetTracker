@@ -4,7 +4,14 @@ const mongoose = require("mongoose");
 const compression = require("compression");
 
 // If deployed, use the deployed database. Otherwise use the local database
-const MONGODB_URI = process.env.MONGODB_URI || process.env.LOCAL;
+// const MONGODB_URI = process.env.MONGODB_URI || process.env.LOCAL;
+
+// ADD THIS TO DEPLOY TO HEROKU
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+});
 
 const PORT = process.env.PORT || 3000;
 
