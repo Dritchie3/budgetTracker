@@ -6,11 +6,13 @@ require("dotenv").config();
 
 //connect to MongoDB Database
 // If deployed, use the deployed database. Otherwise use the local database
+
 // Add this to deploy locally
 // var MONGODB_URI = process.env.MONGODB_URI || process.env.LOCAL;
 
 // ADD THIS TO DEPLOY TO HEROKU
 var MONGODB_URI = process.env.MONGODB_URI || process.env.REMOTE;
+
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useFindAndModify: false,
