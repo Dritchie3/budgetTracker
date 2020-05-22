@@ -1,6 +1,8 @@
 {
     "name": "Budget App",
     "short_name": "Budget App",
+    "start_url": "/",
+    "display": "standalone",
     "icons": [
       {
         "src": "/icons/icon-192x192.png",

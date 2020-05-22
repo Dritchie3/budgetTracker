@@ -2,13 +2,16 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
+require("dotenv").config();
 
+//connect to MongoDB Database
 // If deployed, use the deployed database. Otherwise use the local database
-// const MONGODB_URI = process.env.MONGODB_URI || process.env.LOCAL;
+// Add this to deploy locally
+// var MONGODB_URI = process.env.MONGODB_URI || process.env.LOCAL;
 
-mongoose.connect( process.env.REMOTE, {
 // ADD THIS TO DEPLOY TO HEROKU
-// mongoose.connect(MONGODB_URI, {
+var MONGODB_URI = process.env.MONGODB_URI || process.env.REMOTE;
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useFindAndModify: false,
     useUnifiedTopology: true
@@ -26,11 +29,11 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/budget", {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true
-});
+// mongoose.connect("mongodb://localhost/budget", {
+//   useNewUrlParser: true,
+//   useFindAndModify: false,
+//   useUnifiedTopology: true
+// });
 
 // routes
 app.use(require("./routes/api.js"));
